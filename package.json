@@ -1,0 +1,26 @@
+{
+  "name": "resourceful-redis",
+  "description": "resourceful redis engine",
+  "version": "0.0.1",
+  "author": "Cody Stoltman <particlebanana@gmail.com>",
+  "keywords": [
+    "redis",
+    "database",
+    "ODM"
+  ],
+  "dependencies": {
+    "redis": "0.7.x",
+    "hiredis": "0.1.14",
+    "resourceful": "0.1.10"
+  },
+  "devDependencies": {
+    "mocha": "1.0.x",
+    "should": "0.6.x"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  }
+}
