@@ -8,6 +8,10 @@
     "database",
     "ODM"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/particlebanana/resourceful-redis.git"
+  },
   "dependencies": {
     "redis": "0.7.x",
     "hiredis": "0.1.x",
