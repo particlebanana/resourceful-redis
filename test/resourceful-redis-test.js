@@ -79,3 +79,18 @@ describe("find", function() {
   });
 
 });
+
+describe("all", function() {
+
+  it("returns an array of objects", function(done) {
+    db.createPeople(db.people, function(err, array) {
+      db.Person.all(function(err, people) {
+        if(err) done(err);
+
+        people.should.have.length(3);
+        done();
+      });
+    });
+  });
+
+});
