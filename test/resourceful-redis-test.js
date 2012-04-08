@@ -65,3 +65,17 @@ describe("Destroying", function() {
 
 });
 
+describe("find", function() {
+
+  it("returns an array of objects", function(done) {
+    db.createPeople(db.people, function(err, array) {
+      db.Person.find({age: 21}, function(err, people) {
+        if(err) done(err);
+
+        people.should.have.length(1);
+        done();
+      });
+    });
+  });
+
+});

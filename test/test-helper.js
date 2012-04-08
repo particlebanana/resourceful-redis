@@ -1,4 +1,5 @@
 var resourceful = require('../lib/resourceful-redis'),
+    async = require('async'),
     redis = require('redis');
 
 resourceful.env = 'test';
@@ -22,8 +23,15 @@ DB.Person = resourceful.define('person', function() {
 });
 
 DB.createPeople = function(people, callback) {
-  people.forEach(function(person) {
-    DB.createPerson(person, callback);
+  var peopleArray = [];
+
+  async.forEach(people, function(person, done) {
+    DB.createPerson(person, function(err, p) {
+      peopleArray.push(p);
+      done();
+    });
+  }, function(err) {
+    callback(err, peopleArray);
   });
 };
 
