@@ -15,7 +15,8 @@ DB.people = [
 DB.Person = resourceful.define('person', function() {
 
   this.use("redis", {
-    uri: "redis://127.0.0.1:6379"
+    uri: "redis://127.0.0.1:6379",
+    namespace: "people"
   });
 
   this.string('name');
@@ -42,7 +43,7 @@ DB.createPerson = function(person, callback) {
 DB.drop = function(callback) {
   var conn = redis.createClient();
   conn.FLUSHDB(function() {
-    conn.SET('resourceful:index', "0");
+    conn.SET('resourceful:people:count', "0");
     callback();
   });
 };

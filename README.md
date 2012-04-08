@@ -18,7 +18,8 @@ resourceful-redis is based on all the other resourceful engines including the st
 
     // Specify redis engine and connection
     this.use("redis", {
-      uri: "redis://DB:Pass@127.0.0.1:6379" // Set connection string here, auth is optional
+      uri: "redis://DB:Pass@127.0.0.1:6379", // Set connection string here, auth is optional
+      namespace: "<KEY TO USE AS NAMESPACE>" // Each model will have a different namespace to use as a key
     });
 
     // Specify some properties
