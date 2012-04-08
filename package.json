@@ -3,11 +3,8 @@
   "description": "resourceful redis engine",
   "version": "0.0.1",
   "author": "Cody Stoltman <particlebanana@gmail.com>",
-  "keywords": [
-    "redis",
-    "database",
-    "ODM"
-  ],
+  "url": "http://github.com/particlebanana/resourceful-redis",
+  "keywords": ["redis", "database", "ODM"],
   "repository": {
     "type": "git",
     "url": "git://github.com/particlebanana/resourceful-redis.git"
@@ -26,6 +23,7 @@
     "test": "mocha test"
   },
   "engines": {
-    "node": ">= 0.4.0"
-  }
+    "node": ">= 0.6.0"
+  },
+  "main": "./lib/resourceful-redis"
 }
