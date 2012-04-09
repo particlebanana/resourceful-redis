@@ -32,19 +32,44 @@ describe("Saving", function() {
 
 describe("Updating", function() {
 
-  it("partially updates model", function(done) {
-    db.Person.create({ name: 'Bob', age: 99 }, function (err, person) {
-      if (err) done(err);
+  describe("instance method", function(done) {
 
-      person.update({name:"Steve"}, function(err) {
-        if(err) return done(err);
+    it("partially updates model", function(done) {
+      db.Person.create({ name: 'Bob', age: 99 }, function (err, person) {
+        if (err) done(err);
 
-        person.name.should.equal("Steve");
-        person.age.should.equal(99);
-        done();
+        person.update({name:"Steve"}, function(err) {
+          if(err) return done(err);
+
+          person.name.should.equal("Steve");
+          person.age.should.equal(99);
+          done();
+        });
       });
     });
+
   });
+
+  describe("constructor method", function(done) {
+
+    it("partially updates model", function(done) {
+      db.Person.create({ name: 'Bob', age: 99 }, function (err, person) {
+        if (err) done(err);
+
+        db.Person.update(person.id, {name:"Steve"}, function(err) {
+          if(err) return done(err);
+
+          db.Person.get(person.id, function(err, p) {
+            p.name.should.equal("Steve");
+            p.age.should.equal(99);
+            done();
+          });
+        });
+      });
+    });
+
+  });
+
 });
 
 describe("Destroying", function() {
