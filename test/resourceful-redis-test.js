@@ -32,12 +32,11 @@ describe("Saving", function() {
 
 describe("Updating", function() {
 
-  it("paritally updates model", function(done) {
+  it("partially updates model", function(done) {
     db.Person.create({ name: 'Bob', age: 99 }, function (err, person) {
       if (err) done(err);
 
       person.update({name:"Steve"}, function(err) {
-
         if(err) return done(err);
 
         person.name.should.equal("Steve");
@@ -67,12 +66,23 @@ describe("Destroying", function() {
 
 describe("find", function() {
 
-  it("returns an array of objects", function(done) {
+  it("by attribute", function(done) {
     db.createPeople(db.people, function(err, array) {
       db.Person.find({age: 21}, function(err, people) {
         if(err) done(err);
 
         people.should.have.length(1);
+        done();
+      });
+    });
+  });
+
+  it("by id", function(done) {
+    db.createPeople(db.people, function(err, array) {
+      db.Person.get(array[0].id, function(err, person) {
+        if(err) done(err);
+
+        person.name.should.equal('Bob');
         done();
       });
     });
