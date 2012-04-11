@@ -1,1 +1,0 @@
-exports.Test = require('./resourceful-redis-test');
