@@ -1,6 +1,8 @@
-#resourceful-redis [![Build Status](https://secure.travis-ci.org/particlebanana/resourceful-redis.png?branch=master)](http://travis-ci.org/particlebanana/resourceful-redis)
+#resourceful-redis
 
 A Redis engine for [resourceful](https://github.com/flatiron/resourceful/), a model framework from the [flatiron](https://github.com/flatiron/) project.
+
+[![Build Status](https://secure.travis-ci.org/particlebanana/resourceful-redis.png?branch=master)](http://travis-ci.org/particlebanana/resourceful-redis)
 
 #### Acknowledgement
 
@@ -8,6 +10,10 @@ resourceful-redis is based on all the other resourceful engines including the st
 
   - [resourceful-mongo](https://github.com/codebrew/resourceful-mongo) from codebrew
   - [resourceful-riak](https://github.com/admazely/resourceful-riak) from admazely
+
+#### Status
+
+resourceful-redis is just getting started. I wouldn't use it in production yet but try it out and if you find bugs create an issue so we can get it to a production ready state soon.
 
 ## Example
 
@@ -35,12 +41,12 @@ resourceful-redis is based on all the other resourceful engines including the st
   };
 ```
 
-## Installation
+## Resourceful API
+Resourceful-redis uses the [engines-test.js](https://github.com/flatiron/resourceful/blob/master/test/engines-test.js) test suite from the resourceful project in order to try and ensure API compatibility. It's edited to use [mocha][0] instead of Vows but should be similar. 
 
-### Installing resourceful
-``` bash
-  $ [sudo] npm install resourceful
-```
+Currently resourceful-redis should support all of the CRUD methods that resourceful defines as well as simple find's and filters. In the future I would like to implement relationship modeling and hooks for redis pub/sub functionality.
+
+## Installation
 
 ### Installing resourceful-redis
 ``` bash
