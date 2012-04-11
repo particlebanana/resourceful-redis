@@ -259,6 +259,15 @@ describe('engines-test', function() {
         done();
       });
     });
+
+    describe('should delete the object in db', function() {
+      it('should be missing', function(done) {
+        Author.get('han', function(err, obj) {
+          err.status.should.equal(404);
+          done();
+        });
+      });
+    });
   });
 
   describe('Resource.find() request', function() {
