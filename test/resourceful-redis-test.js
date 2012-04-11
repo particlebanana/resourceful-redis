@@ -121,11 +121,30 @@ describe('redis-engine test', function() {
   });
 
   describe("destroy()", function() {
-    it("by id", function(done) {
-      Person.create(people.bob, function(err, bob) {
-        Person.destroy(bob.id, function(err, result) {
-          result.should.equal(1);
+    describe('by id', function() {
+      it("should be successful", function(done) {
+        Person.destroy(1, function(err) {
+          should.not.exist(err);
           done();
+        });
+      });
+
+      it('should remove from db', function(done) {
+        Person.destroy(1, function(err) {
+          Person.get(1, function(e, obj) {
+            e.status.should.equal(404);
+            done();
+          });
+        });
+      });
+
+      it('should remove index', function(done) {
+        var conn = redis.createClient();
+        Person.destroy(1, function(err) {
+          conn.ZRANGE('resourceful:people:indexes', 0, -1, function(err, res) {
+            res.length.should.equal(2);
+            done();
+          });
         });
       });
     });
