@@ -117,6 +117,13 @@ describe('redis-engine test', function() {
           });
         });
       });
+
+      it("should err if key doesn't exist", function(done) {
+	Person.update(1000, {name:"Steve"}, function(err) {
+	  should.exist(err);
+	  done();
+	});
+      });
     });
   });
 
