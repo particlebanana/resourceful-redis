@@ -1,7 +1,7 @@
 {
   "name": "resourceful-redis",
   "description": "resourceful redis engine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Cody Stoltman <particlebanana@gmail.com>",
   "url": "http://github.com/particlebanana/resourceful-redis",
   "keywords": ["redis", "database", "ODM"],
