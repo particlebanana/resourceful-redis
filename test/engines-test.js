@@ -24,7 +24,7 @@ describe('engines-test', function() {
   var Book = resourceful.define('book', function() {
 
     this.use("redis", {
-      uri: "redis://127.0.0.1:6379",
+      uri: "redis://localhost:6379",
       namespace: "book"
     });
 
@@ -36,7 +36,7 @@ describe('engines-test', function() {
   var Author = resourceful.define('author', function() {
 
     this.use("redis", {
-      uri: "redis://127.0.0.1:6379",
+      uri: "redis://localhost:6379",
       namespace: "author"
     });
 

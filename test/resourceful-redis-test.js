@@ -14,7 +14,7 @@ describe('redis-engine test', function() {
   var Person = resourceful.define('person', function() {
 
     this.use("redis", {
-      uri: "redis://127.0.0.1:6379",
+      uri: "redis://localhost:6379",
       namespace: "people"
     });
 
@@ -96,9 +96,9 @@ describe('redis-engine test', function() {
     describe("instance method", function(done) {
       it("should partially update resource", function(done) {
         Person.create({ name: 'Bob', age: 99 }, function (err, person) {
-          person.update({name:"Steve"}, function(err) {
-            person.name.should.equal("Steve");
-            person.age.should.equal(99);
+          person.update({name:"Steve"}, function(err, obj) {
+            obj.name.should.equal("Steve");
+            obj.age.should.equal(99);
             done();
           });
         });
@@ -119,10 +119,10 @@ describe('redis-engine test', function() {
       });
 
       it("should err if key doesn't exist", function(done) {
-	Person.update(1000, {name:"Steve"}, function(err) {
-	  should.exist(err);
-	  done();
-	});
+        Person.update(1000, {name:"Steve"}, function(err) {
+          should.exist(err);
+          done();
+        });
       });
     });
   });
