@@ -1,7 +1,7 @@
 {
   "name": "resourceful-redis",
   "description": "resourceful redis engine",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Cody Stoltman <particlebanana@gmail.com>",
   "url": "http://github.com/particlebanana/resourceful-redis",
   "keywords": ["redis", "database", "ODM"],
@@ -10,14 +10,14 @@
     "url": "git://github.com/particlebanana/resourceful-redis.git"
   },
   "dependencies": {
-    "redis": "0.7.x",
-    "hiredis": "0.1.x",
-    "resourceful": "0.1.x",
-    "async": "0.1.x"
+    "redis": "0.7.2",
+    "hiredis": "0.1.14",
+    "resourceful": "0.1.10",
+    "async": "0.1.22"
   },
   "devDependencies": {
-    "mocha": "1.0.x",
-    "should": "0.6.x"
+    "mocha": "*",
+    "should": "*"
   },
   "scripts": {
     "test": "mocha test/*"
