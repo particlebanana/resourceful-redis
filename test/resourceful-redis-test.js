@@ -5,6 +5,8 @@ var resourceful = require("../lib/resourceful-redis"),
 
 describe('redis-engine test', function() {
 
+  var connection = redis.createClient();
+
   /**
    * Define some resources to test
    *
@@ -14,7 +16,7 @@ describe('redis-engine test', function() {
   var Person = resourceful.define('person', function() {
 
     this.use("redis", {
-      uri: "redis://localhost:6379",
+      connection: connection,
       namespace: "people"
     });
 
@@ -63,8 +65,7 @@ describe('redis-engine test', function() {
   });
 
   afterEach(function(done) {
-    var conn = redis.createClient();
-    conn.FLUSHDB(function() {
+    connection.FLUSHDB(function() {
       done();
     });
   });

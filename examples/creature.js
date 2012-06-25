@@ -1,10 +1,17 @@
-var resourceful = require('../lib/resourceful-redis');
+var redis = require('redis'),
+    resourceful = require('../lib/resourceful-redis');
+
+// Create a redis connection
+var redisConnection = redis.createClient();
 
 var Creature = resourceful.define('creature', function () {
 
   // Specify redis engine and connection
   this.use("redis", {
-    uri: "redis://DB:Pass@127.0.0.1:6379", // Set connection string here, auth is optional
+    // You can pass in a connection object which is recommened or
+    // a uri string to create a connection per model
+    connection: redisConnection, // Pass in a redis connection
+    // uri: "redis://DB:Pass@127.0.0.1:6379", // Set connection string here, auth is optional
     namespace: "creatures" // Each model will have a different namespace to use as a key
   });
 

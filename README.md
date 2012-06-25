@@ -18,13 +18,18 @@ resourceful-redis is just getting started. I wouldn't use it in production yet b
 ## Example
 
 ``` js
+  var redisConnection = redis.createClient(); // an external redis connection
+
   var resourceful = require('../lib/resourceful-redis');
 
   var Creature = resourceful.define('creature', function () {
 
     // Specify redis engine and connection
     this.use("redis", {
-      uri: "redis://DB:Pass@127.0.0.1:6379", // Set connection string here, auth is optional
+      // You can pass in a connection object which is recommened or
+      // a uri string to create a connection per model
+      connection: redisConnection, // Pass in a redis connection
+      // uri: "redis://DB:Pass@127.0.0.1:6379", // Set connection string here, auth is optional
       namespace: "<KEY TO USE AS NAMESPACE>" // Each model will have a different namespace to use as a key
     });
 
