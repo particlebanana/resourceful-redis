@@ -12,7 +12,7 @@
   "dependencies": {
     "redis": "0.7.2",
     "hiredis": "0.1.14",
-    "resourceful": "0.1.10",
+    "resourceful": "0.2.x",
     "async": "0.1.22"
   },
   "devDependencies": {
@@ -23,7 +23,7 @@
     "test": "mocha test/*"
   },
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 0.8.0"
   },
   "main": "./lib/resourceful-redis"
 }
