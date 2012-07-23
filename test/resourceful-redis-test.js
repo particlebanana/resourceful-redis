@@ -22,6 +22,7 @@ describe('redis-engine test', function() {
 
     this.string('name');
     this.number('age');
+    this.timestamps();
   });
 
   /**
@@ -166,12 +167,25 @@ describe('redis-engine test', function() {
       });
     });
 
-    it("by id", function(done) {
-      Person.get(1, function(err, person) {
-        person.name.should.equal('Bob');
-        done();
+    describe("by id", function(done) {
+
+      it("should return a person record", function(done) {
+        Person.get(1, function(err, person) {
+          person.name.should.equal('Bob');
+          done();
+        });
       });
+
+      it("should return timestamps correctly", function(done) {
+        Person.get(1, function(err, person) {
+          person.ctime.should.be.a('number');
+          person.mtime.should.be.a('number');
+          done();
+        });
+      });
+
     });
+
   });
 
   describe("all", function() {
